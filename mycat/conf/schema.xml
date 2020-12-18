@@ -3,17 +3,18 @@
 <mycat:schema xmlns:mycat="http://io.mycat/">
     <schema name="test_member" checkSQLschema="true" sqlMaxLimit="100" randomDataNode="member_node">
         <!-- auto sharding by id (long) -->
+        <table name="travelrecord" dataNode="member_node" />
         <!--splitTableNames 启用<table name 属性使用逗号分割配置多个表,即多个表使用这个配置-->
         <table name="member" subTables="member_$0-3" dataNode="member_node" rule="member-by-id" splitTableNames="true"
                autoIncrement="true" primaryKey="id"/>
     </schema>
 
-    <dataNode name="member_node" dataHost="member_host" database="testdb1"/>
+    <dataNode name="member_node" dataHost="member_host" database="mycat_test"/>
     <dataHost name="member_host" maxCon="1000" minCon="10" balance="0" writeType="0" dbType="mysql" dbDriver="native"
               switchType="1" slaveThreshold="100">
         <heartbeat>select user()</heartbeat>
         <!--host名称随便写-->
-        <writeHost host="member_host" url="127.0.0.1:3306" user="root" password="1234">
+        <writeHost host="member_host" url="192.168.2.199:3306" user="root" password="root">
         </writeHost>
     </dataHost>
 </mycat:schema>

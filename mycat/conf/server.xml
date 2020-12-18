@@ -18,7 +18,7 @@
         <property name="useSqlStat">0</property>  <!-- 1为开启实时统计、0为关闭 -->
         <property name="useGlobleTableCheck">0</property>  <!-- 1为开启全加班一致性检测、0为关闭 -->
         <property name="sqlExecuteTimeout">300</property>  <!-- SQL 执行超时 单位:秒-->
-        <property name="sequnceHandlerType">1</property>
+        <property name="sequnceHandlerType">1</property>   <!--0本地文件模式 1数据库模式-->
 
         <property name="sequnceHandlerPattern">(?:(\s*next\s+value\s+for\s*MYCATSEQ_(\w+))(,|\)|\s)*)+</property>
         <property name="subqueryRelationshipCheck">false</property> <!-- 子查询中存在关联查询的情况下,检查关联字段中是否有分片字段 .默认 false -->
