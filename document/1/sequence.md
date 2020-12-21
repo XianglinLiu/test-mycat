@@ -56,4 +56,6 @@ DELIMITER ;
 ```
 #设定TEST3表的增长方式为 步进为1 ，
 insert into MYCAT_SEQUENCE (name,current_value,increment) values ('MEMBER',0,100);
+insert into MYCAT_SEQUENCE (name,current_value,increment) values ('JC_MEMBER',0,100);
+insert into MYCAT_SEQUENCE (name,current_value,increment) values ('JC_MEMBER_OPENID',0,100);
 ```
