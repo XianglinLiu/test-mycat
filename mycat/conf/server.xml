@@ -52,19 +52,14 @@
         <property name="parallExecute">0</property>
     </system>
 
-    <user name="root" defaultAccount="true">
-        <property name="password">123456</property>
-        <property name="schemas">test_member</property>
-        <property name="defaultSchema">test_member</property>
-        <!--No MyCAT Database selected 错误前会尝试使用该schema作为schema，不设置则为null,报错 -->
-        <!-- 这里的mycat_test 是 schema.xml schema[name]配置一致 -->
+    <user name="root">
+        <property name="password">root</property>
+        <property name="schemas">yellowcong</property>
     </user>
 
     <user name="user">
         <property name="password">user</property>
-        <property name="schemas">test_member</property>
+        <property name="schemas">yellowcong</property>
         <property name="readOnly">true</property>
-        <property name="defaultSchema">test_member</property>
     </user>
-
 </mycat:server>

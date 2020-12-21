@@ -1,20 +1,21 @@
 <?xml version="1.0"?>
 <!DOCTYPE mycat:schema SYSTEM "schema.dtd">
 <mycat:schema xmlns:mycat="http://io.mycat/">
-    <schema name="test_member" checkSQLschema="true" sqlMaxLimit="100" randomDataNode="member_node">
-        <!-- auto sharding by id (long) -->
-        <table name="travelrecord" dataNode="member_node" />
-        <!--splitTableNames 启用<table name 属性使用逗号分割配置多个表,即多个表使用这个配置-->
-        <table name="member" subTables="member_$0-3" dataNode="member_node" rule="member-by-id" splitTableNames="true"
-               autoIncrement="true" primaryKey="id"/>
+
+    <schema name="yellowcong" checkSQLschema="true" sqlMaxLimit="1000">
+        <table name="test3" dataNode="jdbc_node1" primaryKey="id" autoIncrement="true"  type="global"/>
     </schema>
 
-    <dataNode name="member_node" dataHost="member_host" database="mycat_test"/>
-    <dataHost name="member_host" maxCon="1000" minCon="10" balance="0" writeType="0" dbType="mysql" dbDriver="native"
-              switchType="1" slaveThreshold="100">
+    <dataNode name="jdbc_node1" dataHost="localhost" database="mycat" />
+<!--    <dataNode name="jdbc_node2" dataHost="localhost" database="mycat2" />-->
+
+    <dataHost name="localhost" maxCon="1000" minCon="10" balance="0"
+              writeType="0" dbType="mysql" dbDriver="native" switchType="1"  slaveThreshold="100">
         <heartbeat>select user()</heartbeat>
-        <!--host名称随便写-->
-        <writeHost host="member_host" url="192.168.2.199:3306" user="root" password="root">
-        </writeHost>
+
+        <writeHost host="hostM1" url="127.0.0.1:3306" user="root" password="123456" />
+
     </dataHost>
+
+
 </mycat:schema>
