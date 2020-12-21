@@ -87,7 +87,7 @@
         </rule>
     </tableRule>
 
-
+<!-- TODO mark04  这里表规则  -->
     <tableRule name="member-by-id">
         <rule>
             <columns>id</columns>
@@ -156,10 +156,10 @@
 
 
 
-<!--function前面必须有 table rule -->
+<!--TODO mark05 自己写的 function前面必须有 table rule. 这里的tableRule是 'member-by-id' -->
     <function name="member-by-id-func" class="io.mycat.route.function.AutoPartitionByLong">
-        <property name="mapFile">member_rule.txt</property>
-        <property name="defaultNode">0</property>
+        <property name="mapFile">member_rule.txt</property> <!--TODO 这里是分表规则文件-->
+        <property name="defaultNode">0</property>    <!--TODO 表示数据不在规则里面 默认将数据插入到指定表中 -->
     </function>
 
 </mycat:rule>

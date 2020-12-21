@@ -2,16 +2,22 @@
 <!DOCTYPE mycat:schema SYSTEM "schema.dtd">
 <mycat:schema xmlns:mycat="http://io.mycat/">
 
+<!-- TODO mark01    member_db 和 server.xml 文件中保持一致  sqlMaxLimit 表示默认limit条数 -->
     <schema name="member_db" checkSQLschema="true" sqlMaxLimit="1000">
+<!-- TODO mark02  name="member"  (虚拟表名称-mycat可查看) subTables(相关表的数据会被查询到 这里表示 member_0 m.._1 m.._2 m.._3)   -->
+<!-- TODO mark03 dataNode 表示数据节点和下面配置 DataNode相关 primaryKey表示主键  -->
+<!-- TODO mark04 rule分表规则 和  rule.txt文件对应(这里表示该表 进行分表. 如果想使用通用规则 可以使用 rule.txt 里面的 function name) autoIncrement 自增   -->
         <table name="member" subTables="member_$0-3" dataNode="member_node" primaryKey="id" rule="member-by-id" autoIncrement="true"  />
     </schema>
-
+<!--TODO mark06 member_node 和上面 table的node进行对应 dataHost和下面的 dataHost对应 database 为对应的数据库 -->
     <dataNode name="member_node" dataHost="member_host" database="xianglin" />
+
+<!--TODO mark07 member_host 和上面 dataNode member_host对应-->
 
     <dataHost name="member_host" maxCon="1000" minCon="10" balance="0"
               writeType="0" dbType="mysql" dbDriver="native" switchType="1"  slaveThreshold="100">
-        <heartbeat>select user()</heartbeat>
-
+        <heartbeat>select user()</heartbeat> <!--TODO 这里是心跳检测-->
+<!--TODO mark hostM1 为随便写的名字 url为数据链接 账号 密码-->
         <writeHost host="hostM1" url="127.0.0.1:3306" user="root" password="123456" />
 
     </dataHost>

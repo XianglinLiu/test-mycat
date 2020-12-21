@@ -52,6 +52,8 @@
         <property name="parallExecute">0</property>
     </system>
 
+    <!-- TODO mark01  member_db 和 schema.xml 文件中保持一致  -->
+
     <user name="root">
         <property name="password">123456</property>
         <property name="schemas">member_db</property>
