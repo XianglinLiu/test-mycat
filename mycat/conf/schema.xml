@@ -2,14 +2,13 @@
 <!DOCTYPE mycat:schema SYSTEM "schema.dtd">
 <mycat:schema xmlns:mycat="http://io.mycat/">
 
-    <schema name="yellowcong" checkSQLschema="true" sqlMaxLimit="1000">
-        <table name="test3" dataNode="jdbc_node1" primaryKey="id" autoIncrement="true"  type="global"/>
+    <schema name="member_db" checkSQLschema="true" sqlMaxLimit="1000">
+        <table name="member" subTables="member_$0-3" dataNode="member_node" primaryKey="id" rule="member-by-id" autoIncrement="true"  />
     </schema>
 
-    <dataNode name="jdbc_node1" dataHost="localhost" database="mycat" />
-<!--    <dataNode name="jdbc_node2" dataHost="localhost" database="mycat2" />-->
+    <dataNode name="member_node" dataHost="member_host" database="xianglin" />
 
-    <dataHost name="localhost" maxCon="1000" minCon="10" balance="0"
+    <dataHost name="member_host" maxCon="1000" minCon="10" balance="0"
               writeType="0" dbType="mysql" dbDriver="native" switchType="1"  slaveThreshold="100">
         <heartbeat>select user()</heartbeat>
 

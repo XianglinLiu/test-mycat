@@ -53,13 +53,13 @@
     </system>
 
     <user name="root">
-        <property name="password">root</property>
-        <property name="schemas">yellowcong</property>
+        <property name="password">123456</property>
+        <property name="schemas">member_db</property>
     </user>
 
     <user name="user">
         <property name="password">user</property>
-        <property name="schemas">yellowcong</property>
+        <property name="schemas">member_db</property>
         <property name="readOnly">true</property>
     </user>
 </mycat:server>
